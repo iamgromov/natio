@@ -1,19 +1,20 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 
-import type { RootState } from '../shared/store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
+import preloader from '../assets/globe.gif';
+import { Card } from '../components/Card';
+import { Controls } from '../components/Controls';
+import { List } from '../components/List';
+import { selectControls } from '../shared/store/controls/controls-selectors';
+import { loadCountries } from '../shared/store/countries/countries-actions';
 import {
   selectCountriesInfo,
   selectVisibleCountries,
 } from '../shared/store/countries/countries-selectors';
-import { loadCountries } from '../shared/store/countries/countries-actions';
-import { selectControls } from '../shared/store/controls/controls-selectors';
-import { List } from '../components/List';
-import { Card } from '../components/Card';
-import { Controls } from '../components/Controls';
 
-import preloader from '../assets/globe.gif';
+import type { RootState } from '../shared/store/store';
 
 interface CountryInfoItem {
   title: string;

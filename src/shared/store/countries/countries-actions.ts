@@ -1,4 +1,3 @@
-import type { AppThunk, ThunkExtraArg } from '../store';
 import {
   SET_COUNTRIES,
   SET_ERROR,
@@ -8,6 +7,8 @@ import {
   type SetErrorAction,
   type SetLoadingAction,
 } from './types';
+
+import type { AppThunk, ThunkExtraArg } from '../store';
 
 export const setCountries = (countries: ICountry[]): SetCountriesAction => ({
   type: SET_COUNTRIES,

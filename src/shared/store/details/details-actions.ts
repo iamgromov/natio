@@ -1,5 +1,3 @@
-import type { ICountry } from '../countries/types';
-import type { AppThunk, ThunkExtraArg } from '../store';
 import {
   CLEAR_DETAILS,
   SET_COUNTRY,
@@ -13,6 +11,9 @@ import {
   type SetLoadingAction,
   type SetNeighborsAction,
 } from './types';
+
+import type { ICountry } from '../countries/types';
+import type { AppThunk, ThunkExtraArg } from '../store';
 
 const setLoading = (): SetLoadingAction => ({
   type: SET_LOADING,

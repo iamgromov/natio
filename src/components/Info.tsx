@@ -1,9 +1,11 @@
 import { useEffect, type FC } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
-import { selectNeighbors } from '../shared/store/details/details-selectors';
 import { loadNeighborsByBorder } from '../shared/store/details/details-actions';
+import { selectNeighbors } from '../shared/store/details/details-selectors';
+
 import type { CurrentCountry } from '../shared/store/details/types';
 
 const Wrapper = styled.section`

@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
+
+import { IoMoon, IoMoonOutline } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { IoMoon, IoMoonOutline } from 'react-icons/io5';
 import styled from 'styled-components';
 
 import { Container } from './Container';
-import { setTheme } from '../shared/store/theme/theme-action';
-import type { RootState } from '../shared/store/store';
 import { clearControls } from '../shared/store/controls/controls-action';
+import { setTheme } from '../shared/store/theme/theme-action';
+
+import type { RootState } from '../shared/store/store';
 
 const HeaderEl = styled.header`
   box-shadow: var(--shadow);

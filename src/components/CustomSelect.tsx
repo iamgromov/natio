@@ -1,6 +1,6 @@
+import Select, { type StylesConfig } from 'react-select';
 import styled from 'styled-components';
 
-import Select, { type StylesConfig } from 'react-select';
 
 interface SelectOption {
   value: string;

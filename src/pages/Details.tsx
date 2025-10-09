@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
+
+import { IoArrowBack } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
-import { IoArrowBack } from 'react-icons/io5';
-
-import { selectDetails } from '../shared/store/details/details-selectors';
-import { clearDetails, loadCountryByName } from '../shared/store/details/details-actions';
-import { Button } from '../components/Button';
-import { Info } from '../components/Info';
 
 import preloader from '../assets/globe.gif';
+import { Button } from '../components/Button';
+import { Info } from '../components/Info';
+import { clearDetails, loadCountryByName } from '../shared/store/details/details-actions';
+import { selectDetails } from '../shared/store/details/details-selectors';
 
 export const Details = () => {
   const dispatch = useDispatch();

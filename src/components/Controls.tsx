@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-
-import { selectRegion } from '../shared/store/controls/controls-selectors';
-import { setRegion } from '../shared/store/controls/controls-action';
-import { Search } from './Search';
-import { CustomSelect } from './CustomSelect';
 import styled from 'styled-components';
+
+import { CustomSelect } from './CustomSelect';
+import { Search } from './Search';
+import { setRegion } from '../shared/store/controls/controls-action';
+import { selectRegion } from '../shared/store/controls/controls-selectors';
+
 
 export interface SelectOption {
   value: string;

@@ -1,10 +1,11 @@
 import type { ChangeEvent } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
-import { selectSearch } from '../shared/store/controls/controls-selectors';
-import { setSearch } from '../shared/store/controls/controls-action';
 import { IoSearch } from 'react-icons/io5';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+
+import { setSearch } from '../shared/store/controls/controls-action';
+import { selectSearch } from '../shared/store/controls/controls-selectors';
 
 const InputContainer = styled.label`
   background-color: var(--colors-ui-base);

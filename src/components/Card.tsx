@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+
 import styled from 'styled-components';
 
 import type { CountryInfo } from '../pages/HomePage';

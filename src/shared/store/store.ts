@@ -1,3 +1,4 @@
+import axios, { type AxiosInstance } from 'axios';
 import {
   createStore,
   compose,
@@ -7,10 +8,10 @@ import {
   type Action,
 } from 'redux';
 import thunk, { type ThunkAction, type ThunkMiddleware } from 'redux-thunk';
-import axios, { type AxiosInstance } from 'axios';
 
 import { rootReducer } from './root-reducer';
 import * as api from '../api/config';
+
 import type { CountryActionTypes } from './countries/types';
 import type { DetailsActionTypes } from './details/types';
 
