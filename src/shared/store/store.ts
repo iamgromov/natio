@@ -1,58 +1,39 @@
+import { configureStore } from '@reduxjs/toolkit';
 import axios, { type AxiosInstance } from 'axios';
-import {
-  createStore,
-  compose,
-  applyMiddleware,
-  type AnyAction,
-  type Store,
-  type Action,
-} from 'redux';
-import thunk, { type ThunkAction, type ThunkMiddleware } from 'redux-thunk';
 
-import { rootReducer } from './root-reducer';
-import * as api from '../api/config';
+import * as api from '../api';
+import controlsReducer from './slices/controls-slice';
+import countriesReducer from './slices/countries-slice';
+import detailsReducer from './slices/details-slice';
+import themeReducer from './slices/theme-slice';
 
-import type { CountryActionTypes } from './countries/types';
-import type { DetailsActionTypes } from './details/types';
+export const store = configureStore({
+  reducer: {
+    controls: controlsReducer,
+    countries: countriesReducer,
+    details: detailsReducer,
+    theme: themeReducer,
+  },
+  devTools: true,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      thunk: {
+        extraArgument: {
+          client: axios,
+          api,
+        },
+      },
+      serializebleCheck: false,
+    }),
+});
 
-export interface ThunkExtraArg {
-  client: AxiosInstance;
-  api: typeof api;
+export type RootState = ReturnType<typeof store.getState>;
+
+export type AppDispatch = typeof store.dispatch;
+
+export interface AsyncThunkConfig {
+  extra: {
+    client: AxiosInstance;
+    api: typeof api;
+  };
 }
-
-export type RootState = ReturnType<typeof rootReducer>;
-
-export type AppStore = Store<RootState, AnyAction>;
-
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  ThunkExtraArg,
-  CountryActionTypes | DetailsActionTypes | Action<string>
->;
-
-export type Status = 'idle' | 'loading' | 'received' | 'rejected';
-
-type AppThunkMiddleware = ThunkMiddleware<RootState, AnyAction, ThunkExtraArg>;
-
-declare global {
-  interface Window {
-    __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-  }
-}
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const store: AppStore = createStore(
-  rootReducer,
-  composeEnhancers(
-    applyMiddleware(
-      thunk.withExtraArgument({
-        client: axios,
-        api,
-      }) as AppThunkMiddleware
-    )
-  )
-);
-
-export { store };

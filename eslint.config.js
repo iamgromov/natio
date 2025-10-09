@@ -43,12 +43,7 @@ export default defineConfig([
           },
           pathGroups: [
             {
-              pattern: 'react',
-              group: 'external',
-              position: 'before',
-            },
-            {
-              pattern: 'react-**',
+              pattern: 'react**',
               group: 'external',
               position: 'before',
             },
@@ -59,6 +54,8 @@ export default defineConfig([
       'import/first': 'error',
       'import/newline-after-import': 'error',
       'import/no-duplicates': 'error',
+      'import/no-unused-modules': 'error',
+      '@typescript-eslint/no-unused-vars': 'off',
     },
   },
 ]);

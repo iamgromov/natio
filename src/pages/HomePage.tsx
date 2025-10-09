@@ -1,93 +1,13 @@
-import { useEffect } from 'react';
+import type { FC, ReactElement } from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Controls } from '../shared/components/Controls';
+import { CountriesList } from '../shared/components/CountriesList';
 
-import preloader from '../assets/globe.gif';
-import { Card } from '../components/Card';
-import { Controls } from '../components/Controls';
-import { List } from '../components/List';
-import { selectControls } from '../shared/store/controls/controls-selectors';
-import { loadCountries } from '../shared/store/countries/countries-actions';
-import {
-  selectCountriesInfo,
-  selectVisibleCountries,
-} from '../shared/store/countries/countries-selectors';
-
-import type { RootState } from '../shared/store/store';
-
-interface CountryInfoItem {
-  title: string;
-  description: string;
-}
-
-export interface CountryInfo {
-  img: string;
-  name: string;
-  info: CountryInfoItem[];
-}
-
-export const HomePage = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { search, region } = useSelector(selectControls);
-  const countries = useSelector((state: RootState) =>
-    selectVisibleCountries(state, { search, region })
-  );
-  const { status, error, quantity } = useSelector(selectCountriesInfo);
-
-  useEffect(() => {
-    if (!quantity) {
-      dispatch(loadCountries());
-    }
-  }, [quantity, dispatch]);
-
+export const Home: FC = (): ReactElement => {
   return (
     <>
       <Controls />
-
-      {error && <h2>Can't fetch data</h2>}
-      {status === 'loading' && (
-        <img
-          style={{
-            display: 'flex',
-            margin: '200px auto',
-            width: '40px',
-            height: '40px',
-          }}
-          src={preloader}
-          alt='Preloader'
-        />
-      )}
-
-      {status === 'received' && (
-        <List>
-          {countries.map((c) => {
-            const countryInfo: CountryInfo = {
-              img: c.flags.png,
-              name: c.name,
-              info: [
-                {
-                  title: 'Population',
-                  description: c.population.toLocaleString(),
-                },
-                {
-                  title: 'Region',
-                  description: c.region,
-                },
-                {
-                  title: 'Capital',
-                  description: c.capital,
-                },
-              ],
-            };
-
-            return (
-              <Card key={c.name} onClick={() => navigate(`/country/${c.name}`)} {...countryInfo} />
-            );
-          })}
-        </List>
-      )}
+      <CountriesList />
     </>
   );
 };
