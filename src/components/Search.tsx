@@ -1,7 +1,8 @@
 import type { ChangeEvent } from 'react';
 
-import { IoSearch } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { IoSearch } from 'react-icons/io5';
 import styled from 'styled-components';
 
 import { setSearch } from '../shared/store/controls/controls-action';

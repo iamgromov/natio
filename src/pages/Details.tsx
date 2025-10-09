@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 
-import { IoArrowBack } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+
+import { IoArrowBack } from 'react-icons/io5';
 
 import preloader from '../assets/globe.gif';
 import { Button } from '../components/Button';

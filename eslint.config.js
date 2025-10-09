@@ -48,8 +48,9 @@ export default defineConfig([
               position: 'before',
             },
             {
-              pattern: '@/**',
-              group: 'internal',
+              pattern: 'react-**',
+              group: 'external',
+              position: 'before',
             },
           ],
           pathGroupsExcludedImportTypes: ['react'],

@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 
-import { IoMoon, IoMoonOutline } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+
+import { IoMoon, IoMoonOutline } from 'react-icons/io5';
 import styled from 'styled-components';
 
 import { Container } from './Container';

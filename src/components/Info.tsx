@@ -1,6 +1,7 @@
 import { useEffect, type FC } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
+
 import styled from 'styled-components';
 
 import { loadNeighborsByBorder } from '../shared/store/details/details-actions';
